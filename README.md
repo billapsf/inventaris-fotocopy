@@ -50,76 +50,43 @@ Dengan adanya sistem inventaris ini, pengelolaan barang pada usaha fotocopy diha
 
 ---
 
-## Teknologi yang Digunakan
-- Laravel 12
-- PHP 8.2
-- MySQL
-- Blade
-- HTML
-- CSS
-- JavaScript
-
----
-
-## Cara Menjalankan Project
-1. Clone repository
-2. Masuk ke folder project
-3. Install dependency
-4. Copy file environment
-5. Generate application key
-6. Buat database
-7. Atur koneksi database di file `.env`
-8. Jalankan migrasi
-9. Jalankan server Laravel
-
-```bash
-git clone https://github.com/billapsf/inventaris-fotocopy.git
-cd inventaris-fotocopy
-composer install
-copy .env.example .env
-php artisan key:generate
-php artisan migrate
-php artisan serve
-```
-
----
-
-## Konfigurasi Database
-Buat database dengan nama:
-
-```bash
-inventaris
-```
-
-Lalu sesuaikan isi file `.env`:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=inventaris
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
----
-
 ## Halaman Sistem
 
 ### 1. Login
-Halaman login digunakan admin untuk masuk ke dalam sistem menggunakan email dan password yang telah terdaftar.
+![Halaman Login](docs/images/halaman-login.png)
+
+Halaman login digunakan admin untuk masuk ke dalam sistem menggunakan email dan password yang telah terdaftar.  
+Pada halaman ini admin harus mengisi email dan password dengan benar agar dapat mengakses sistem inventaris fotocopy.
 
 ### 2. Dashboard
-Dashboard menampilkan ringkasan data inventaris seperti total data barang dan total stok keseluruhan, serta menyediakan akses cepat ke halaman data barang.
+![Halaman Dashboard](docs/images/halaman-dashboard.png)
+
+Dashboard menampilkan ringkasan data inventaris seperti total data barang dan total stok keseluruhan.  
+Halaman ini juga memberikan sambutan kepada admin serta menyediakan tombol cepat untuk menuju halaman data barang.
 
 ### 3. Data Barang
-Halaman data barang digunakan untuk menampilkan seluruh daftar inventaris yang tersimpan di dalam sistem, lengkap dengan kode barang, nama barang, kategori, stok, harga, dan aksi edit atau hapus.
+![Halaman Data Barang](docs/images/halaman-data-barang.png)
+
+Halaman data barang digunakan untuk menampilkan seluruh daftar inventaris yang tersimpan di dalam sistem.  
+Informasi yang ditampilkan meliputi kode barang, nama barang, kategori, stok, harga, serta tombol aksi untuk edit dan hapus data.
 
 ### 4. Tambah Barang
-Halaman tambah barang digunakan admin untuk memasukkan data inventaris baru ke dalam sistem.
+![Halaman Tambah Barang](docs/images/halaman-tambah-barang.png)
+
+Halaman tambah barang digunakan admin untuk memasukkan data inventaris baru ke dalam sistem.  
+Admin dapat mengisi nama barang, kategori, stok, dan harga, sedangkan kode barang dibuat otomatis oleh sistem.
 
 ### 5. Edit Barang
-Halaman edit barang digunakan untuk memperbarui data inventaris yang sudah ada sesuai kondisi terbaru.
+![Halaman Edit Barang](docs/images/halaman-edit-barang.png)
+
+Halaman edit barang digunakan untuk memperbarui data inventaris yang sudah ada sesuai kondisi terbaru.  
+Pada halaman ini admin dapat mengubah informasi barang seperti nama barang, kategori, stok, dan harga.
+
+### 6. Hapus Barang
+![Halaman Hapus Barang](docs/images/halaman-hapus-barang.png)
+
+Fitur hapus barang digunakan untuk menghapus data inventaris yang sudah tidak diperlukan dari sistem.  
+Saat tombol hapus dipilih, sistem akan menampilkan konfirmasi terlebih dahulu agar admin tidak menghapus data secara tidak sengaja.
 
 ---
 
