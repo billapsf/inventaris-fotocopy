@@ -1,10 +1,10 @@
 # Sistem Inventaris Fotocopy
 
 ## Identitas Mahasiswa
-- Nama: Isi nama kamu
-- NIM: Isi NIM kamu
-- Program Studi: Isi program studi kamu
-- Kelas: Isi kelas kamu
+- Nama: NABILLA PUTRI SARI FATIKHAH
+- NIM: 220101067
+- Program Studi: S1 SISTEM INFORMASI
+- Kelas: SI 22A2
 
 ---
 
