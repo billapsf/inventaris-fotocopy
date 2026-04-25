@@ -23,6 +23,10 @@
                 <div class="stat-label">Total Data Barang</div>
             </div>
             <div class="card">
+                <div class="stat-value">{{ $totalKategori }}</div>
+                <div class="stat-label">Total Kategori</div>
+            </div>
+            <div class="card">
                 <div class="stat-value">{{ $totalStok }}</div>
                 <div class="stat-label">Jumlah Stok Keseluruhan</div>
             </div>

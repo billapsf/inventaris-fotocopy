@@ -1,19 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Data Barang | INVENTARIS')
+@section('title', 'Data Kategori | INVENTARIS')
 
 @section('content')
     <div class="container">
-        <h1 class="page-title">Data Barang</h1>
+        <h1 class="page-title">Data Kategori</h1>
+        <p class="page-subtitle">Kategori barang untuk kebutuhan inventaris Fotocopy Prima.</p>
 
         @if (session('success'))
             <div class="alert alert-success" data-auto-hide>{{ session('success') }}</div>
         @endif
 
+        @if (session('error'))
+            <div class="alert alert-danger" data-auto-hide>{{ session('error') }}</div>
+        @endif
+
         <div class="card">
             <div class="section-header">
-                <div><strong>Total barang:</strong> {{ $barang->count() }}</div>
-                <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
+                <div><strong>Total kategori:</strong> {{ $kategori->count() }}</div>
+                <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
             </div>
 
             <div class="table-wrapper">
@@ -21,27 +26,21 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Barang</th>
-                            <th>Nama Barang</th>
-                            <th>Kategori</th>
-                            <th>Stok</th>
-                            <th>Harga</th>
+                            <th>Nama Kategori</th>
+                            <th>Jumlah Barang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($barang as $item)
+                        @forelse ($kategori as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->kode_barang }}</td>
-                                <td>{{ $item->nama_barang }}</td>
-                                <td>{{ $item->kategori?->nama_kategori }}</td>
-                                <td>{{ $item->stok }}</td>
-                                <td>Rp {{ number_format((float) $item->harga, 2, ',', '.') }}</td>
+                                <td>{{ $item->nama_kategori }}</td>
+                                <td>{{ $item->barang_count }}</td>
                                 <td>
                                     <div class="actions">
-                                        <a href="{{ route('barang.edit', $item) }}" class="btn btn-secondary">Edit</a>
-                                        <form action="{{ route('barang.destroy', $item) }}" method="POST" class="inline" data-confirm-delete="Yakin ingin menghapus data ini?">
+                                        <a href="{{ route('kategori.edit', $item) }}" class="btn btn-secondary">Edit</a>
+                                        <form action="{{ route('kategori.destroy', $item) }}" method="POST" class="inline" data-confirm-delete="Yakin ingin menghapus kategori ini?">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -51,7 +50,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center text-muted">Belum ada data barang.</td>
+                                <td colspan="4" class="text-center text-muted">Belum ada data kategori.</td>
                             </tr>
                         @endforelse
                     </tbody>

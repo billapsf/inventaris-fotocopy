@@ -3,29 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Kategori;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class BarangController extends Controller
 {
-    private array $kategoriOptions = [
-        'ATK',
-        'Bahan Habis Pakai',
-        'Peralatan',
-    ];
-
     public function index(): View
     {
         return view('barang.index', [
-            'barang' => Barang::orderBy('kode_barang')->get(),
+            'barang' => Barang::with('kategori')->orderBy('kode_barang')->get(),
         ]);
     }
 
     public function create(): View
     {
         return view('barang.create', [
-            'kategoriOptions' => $this->kategoriOptions,
+            'kategoriOptions' => Kategori::orderBy('nama_kategori')->get(),
             'kodeBarang' => $this->generateKodeBarang(),
         ]);
     }
@@ -44,7 +39,7 @@ class BarangController extends Controller
     {
         return view('barang.edit', [
             'barang' => $barang,
-            'kategoriOptions' => $this->kategoriOptions,
+            'kategoriOptions' => Kategori::orderBy('nama_kategori')->get(),
             'kodeBarang' => $barang->kode_barang,
         ]);
     }
@@ -69,13 +64,13 @@ class BarangController extends Controller
     {
         return $request->validate([
             'nama_barang' => ['required', 'max:100'],
-            'kategori' => ['required', 'in:' . implode(',', $this->kategoriOptions)],
+            'kategori_id' => ['required', 'exists:kategori,id'],
             'stok' => ['required', 'integer', 'min:0'],
             'harga' => ['required', 'numeric', 'min:0'],
         ], [
             'nama_barang.required' => 'Nama barang wajib diisi.',
-            'kategori.required' => 'Kategori wajib diisi.',
-            'kategori.in' => 'Kategori yang dipilih tidak valid.',
+            'kategori_id.required' => 'Kategori wajib dipilih.',
+            'kategori_id.exists' => 'Kategori yang dipilih tidak valid.',
             'stok.required' => 'Stok wajib diisi.',
             'stok.integer' => 'Stok harus berupa angka bulat.',
             'stok.min' => 'Stok tidak boleh minus.',

@@ -13,16 +13,17 @@
 </div>
 
 <div class="form-group">
-    <label for="kategori">Kategori</label>
-    <select id="kategori" name="kategori" required>
+    <label for="kategori_id">Kategori</label>
+    <select id="kategori_id" name="kategori_id" required>
         <option value="">-- Pilih Kategori --</option>
         @foreach ($kategoriOptions as $kategori)
-            <option value="{{ $kategori }}" @selected(old('kategori', $barang->kategori ?? '') === $kategori)>
-                {{ $kategori }}
+            <option value="{{ $kategori->id }}" @selected((string) old('kategori_id', $barang->kategori_id ?? '') === (string) $kategori->id)>
+                {{ $kategori->nama_kategori }}
             </option>
         @endforeach
     </select>
-    @error('kategori')
+    <small class="form-hint">Kategori diambil dari data master kategori.</small>
+    @error('kategori_id')
         <span class="text-danger">{{ $message }}</span>
     @enderror
 </div>

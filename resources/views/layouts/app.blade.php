@@ -15,6 +15,7 @@
                     <div class="brand">FOTOCOPY PRIMA</div>
                     <div class="nav-links">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
+                        <a href="{{ route('kategori.index') }}">Kategori</a>
                         <a href="{{ route('barang.index') }}">Data Barang</a>
                     </div>
                 </div>
